@@ -1,7 +1,8 @@
 #include <cstdlib>
-#include <thimble/all.h>
+//#include <thimble/all.h>
 
 #include <iostream>
+#include <algorithm>
 #include <memory>
 #include <vector>
 #include <string>
@@ -10,15 +11,15 @@ using namespace aff3ct;
 
 struct params
 {
-	int   K = 233;     // number of information bits
-	int   N = 255;     // codeword size
-	int   m = 8;       // folding parameter
+	int   K = 91;     // number of information bits
+	int   N = 511;     // codeword size
+	int   m = 1;       // folding parameter
 	int   t = (int)(N - K) / 2.;   // correction power
-	int   fe = 100;     // number of frame errors
+	int   fe = 15;     // number of frame errors
 	int   seed = 0;     // PRNG seed for the AWGN channel
-	float ebn0_min = 0.00f; // minimum SNR value
-	float ebn0_max = 15.00f; // maximum SNR value
-	float ebn0_step = 0.50f; // SNR step
+	float ebn0_min = 1.00f; // minimum SNR value
+	float ebn0_max = 8.00f; // maximum SNR value
+	float ebn0_step = 0.5f; // SNR step
 	float R;                   // code rate (R=K/N)
 	RS_polynomial_generator Pol_Gen{ (1 << (int)std::ceil(std::log2(N))) - 1, t };
 };
@@ -28,9 +29,9 @@ struct modules
 {
 	std::unique_ptr<module::Source_random<>>                   source;
 	std::unique_ptr<module::Encoder_RS<>>                     encoder;
-
+	std::unique_ptr<module::Encoder_NO<>>                  encoder_no;
 	std::unique_ptr<tools::Interleaver_core_column_row<>> itl_col_row;
-	
+
 	std::unique_ptr<module::Interleaver<int>>                 itl_bit;
 	std::unique_ptr<module::Interleaver<float>>               itl_llr;
 
@@ -38,8 +39,15 @@ struct modules
 	std::unique_ptr<module::Modem_generic<>>                modem_QAM;
 	std::unique_ptr<module::Modem_BPSK<>>                  modem_BPSK;
 
-	std::unique_ptr<module::Channel_AWGN_LLR<>>               channel;
+	std::unique_ptr<module::Channel_AWGN_LLR<>>          channel_AWGN;
+	//std::unique_ptr<module::Channel_user_add<>>          channel_add;
+	std::unique_ptr<module::Channel_Rayleigh_LLR<>>   channel_Rayleigh;
+	//std::unique_ptr<module::Channel_Rayleigh_LLR_user<>>channel_Rayleigh_add;
+	//std::unique_ptr<module::Channel_optical<>>        channel_optical;
+
+
 	std::unique_ptr<module::Decoder_RS_std<>>             decoder_std;
+	std::unique_ptr<module::Decoder_NO<>>                  decoder_no;
 	//std::unique_ptr<module::Decoder_RS_genius<>>         decoder_RS;
 	//std::unique_ptr<module::Decoder_FRS<>>              decoder_FRS;
 
@@ -61,6 +69,8 @@ struct buffers
 	std::vector<float> LLRs_it;
 	std::vector<float> LLRs;
 	std::vector<int  > dec_bits;
+	std::vector<int  > error;
+	std::vector<float> H;
 };
 void init_buffers(const params& p, buffers& b);
 
@@ -72,6 +82,142 @@ struct utils
 
 };
 void init_utils(const modules& m, utils& u);
+
+//std::vector<int> diff(int K, std::vector<int>& error, std::vector<int>& dec_bits, std::vector<int>& ref_bits)
+//{
+//	for (int i = 0; i < K * 8; i++)
+//	{
+//		error[i] = abs(dec_bits[i] - ref_bits[i]);
+//	}
+//	std::vector<int> result;
+//
+//	int iter = 0;
+//	for (int i = 0; i < error.size(); i++)
+//	{
+//		if (error[i] == 1)
+//		{
+//			++iter;
+//		}
+//		else
+//		{
+//			result.push_back(iter);
+//			iter = 0;
+//		}
+//	}
+//
+//	int iter2 = 0;
+//	std::vector<std::vector<int>> unique{ {},{} };
+//
+//	for (int i = 0; i < result.size(); i++)
+//	{
+//		if (std::find(unique[0].begin(), unique[0].end(), result[i]) != unique[0].end())
+//		{
+//			auto it = find(unique[0].begin(), unique[0].end(), result[i]);
+//			int index = it - unique[0].begin();
+//			++unique[1][index];
+//		}
+//		else
+//		{
+//			++iter2;
+//			unique[0].resize(iter2);
+//			unique[1].resize(iter2);
+//			unique[0].push_back(result[i]);
+//			unique[1].push_back(1);
+//		}
+//	}
+//	//std::vector<std::vector<int>> unique{ {0,1,2},{} };
+//
+//	std::cout << "Sequence of errors:" << " | " <<  "Count:" << " | " << "Probability:" << std::endl;
+//	int count = 0;
+//	for (int j = 0; j < unique[0].size(); j++)
+//	{
+//		std::cout << std::setw(18) << unique[0][j]  << "  |" <<
+//			std::setw(6) << unique[1][j]  << "  |" <<
+//			std::setw(2) << (double)((double)unique[1][j] / (double)size(result)) << std::endl;
+//			//std::setw(2) << 0.659732 << std::endl;
+//		
+//		count += unique[1][j];
+//	}
+//	//std::cout << round(0.659732 * (double)size(result)) << std::endl;
+//	//std::cout << round(924 * ) << std::endl;
+//	std::cout << count << std::endl;
+//	return error;
+//}
+
+std::vector<int> diff(int K, std::vector<int>& error, std::vector<float>& LLR, std::vector<int>& bits)
+{
+	std::vector<int>LLRs;
+	for (int i = 0; i < K * 8; i++)
+	{
+		if (LLR[i] < 0)	LLRs.push_back(1);
+		else LLRs.push_back(0);
+	}
+
+	for (int i = 0; i < K * 8; i++)
+	{
+		error[i] = abs(LLRs[i] - bits[i]);
+	}
+
+	std::vector<int> result;
+	bool flag = 0;
+	int iter = 0;
+	for (int i = 0; i < error.size(); i++)
+	{
+		if (error[i] == 1)
+		{
+			++iter;
+			flag = 1;
+		}
+		else
+		{
+			
+			if (flag)
+			{
+				result.push_back(iter);
+			}
+			iter = 0;
+			flag = 0;
+		}
+	}
+
+	int iter2 = 0;
+	std::vector<std::vector<int>> unique{ {},{} };
+
+	for (int i = 0; i < result.size(); i++)
+	{
+		if (std::find(unique[0].begin(), unique[0].end(), result[i]) != unique[0].end())
+		{
+			auto it = find(unique[0].begin(), unique[0].end(), result[i]);
+			int index = it - unique[0].begin();
+			++unique[1][index];
+		}
+		else
+		{
+			++iter2;
+			unique[0].resize(iter2);
+			unique[1].resize(iter2);
+			unique[0].push_back(result[i]);
+			unique[1].push_back(1);
+		}
+	}
+	//std::vector<std::vector<int>> unique{ {0,1,2},{} };
+
+	std::cout << "Sequence of errors:" << " | " << "Count:" << " | " << "Probability:" << std::endl;
+	int count = 0;
+	for (int j = 0; j < unique[0].size(); j++)
+	{
+		std::cout << std::setw(18) << unique[0][j] << "  |" <<
+			std::setw(6) << unique[1][j] << "  |" <<
+			std::setw(2) << (double)((double)unique[1][j] / (double)size(result)) << std::endl;
+		//std::setw(2) << 0.659732 << std::endl;
+
+		count += unique[1][j];
+	}
+	//std::cout << round(0.659732 * (double)size(result)) << std::endl;
+	//std::cout << round(924 * ) << std::endl;
+	std::cout << count << std::endl;
+	return error;
+}
 
 
 
@@ -114,17 +260,21 @@ int main(int argc, char** argv)
 			m.source->generate(b.ref_bits);
 			m.encoder->encode(b.ref_bits, b.enc_bits);
 			//b.enc_bits_it = foldingint(b.enc_bits, p.m);
-			m.itl_bit->interleave(b.enc_bits, b.enc_bits_it);
-			//m.modem_BPSK->modulate(b.enc_bits_it, b.symbols);
-			m.modem_QAM->modulate(b.enc_bits_it, b.symbols);
-			m.channel->add_noise(b.sigma, b.symbols, b.noisy_symbols);
-			m.modem_QAM->demodulate(b.sigma, b.noisy_symbols, b.LLRs_it);
-			//m.modem_BPSK->demodulate(b.sigma, b.noisy_symbols, b.LLRs_it);
-			m.itl_llr->deinterleave(b.LLRs_it, b.LLRs);
-			//ListDecoder::decode(b.LLRs, b.dec_bits,p.N,p.K, 1 << (int)std::ceil(std::log2(p.N)) - 1,p.Bin_Field);
+			//m.itl_bit->interleave(b.enc_bits, b.enc_bits_it);
+			m.modem_BPSK->modulate(b.enc_bits, b.symbols);
+			//m.modem_QAM->modulate(b.enc_bits_it, b.symbols);
+			//m.channel_Rayleigh->add_noise_wg(b.sigma, b.symbols, b.H, b.noisy_symbols);
+			m.channel_AWGN->add_noise(b.sigma, b.symbols, b.noisy_symbols);
+			//m.modem_QAM->demodulate(b.sigma, b.noisy_symbols, b.LLRs_it);
+			m.modem_BPSK->demodulate(b.sigma, b.noisy_symbols, b.LLRs);
+			//m.itl_llr->deinterleave(b.LLRs_it, b.LLRs);
+			//m.decoder_no->decode_siho(b.LLRs, b.dec_bits);
 			m.decoder_std->decode_siho(b.LLRs, b.dec_bits);
-			//m.decoder_RS->decode_siho(b.LLRs, b.dec_bits);
+			//b.error = diff(p.K, b.error, b.dec_bits, b.enc_bits);
 			m.monitor->check_errors(b.dec_bits, b.ref_bits);
+			
+			//float a=m.monitor->get_n_be();
+			//std::cout << a << std::endl;
 		}
 
 		// display the performance (BER and FER) in the terminal
@@ -133,7 +283,7 @@ int main(int argc, char** argv)
 		// reset the monitor for the next SNR
 		m.monitor->reset();
 		u.terminal->reset();
-
+		//b.error = diff(p.K, b.error, b.LLRs, b.dec_bits);
 		// if user pressed Ctrl+c twice, exit the SNRs loop
 		if (u.terminal->is_over()) break;
 	}
@@ -169,6 +319,7 @@ void init_modules(const params& p, modules& m)
 
 	m.source = std::unique_ptr <module::Source_random        <>>(new module::Source_random    <>(p.K * 8));
 	m.encoder = std::unique_ptr<module::Encoder_RS           <>>(new module::Encoder_RS       <>(p.K, p.N, p.Pol_Gen));
+	//m.encoder_no = std::unique_ptr<module::Encoder_NO           <>>(new module::Encoder_NO       <>(p.K*8));
 
 	m.itl_col_row = std::unique_ptr<tools::Interleaver_core_column_row<>>(new tools::Interleaver_core_column_row<>(p.N * 8, p.m, "TOP_LEFT"));
 	m.itl_bit = std::unique_ptr<module::Interleaver       <int>>(new module::Interleaver   <int>(*m.itl_col_row));
@@ -178,12 +329,16 @@ void init_modules(const params& p, modules& m)
 	m.modem_BPSK = std::unique_ptr<module::Modem_BPSK        <>>(new module::Modem_BPSK       <>(p.N * 8));
 	m.modem_QAM = std::unique_ptr <module::Modem_generic     <>>(new module::Modem_generic    <>(p.N * 8, *m.cstl_QAM));
 
-	m.channel = std::unique_ptr<module::Channel_AWGN_LLR     <>>(new module::Channel_AWGN_LLR <>(p.N * 8 / p.m * 2));
+	m.channel_AWGN = std::unique_ptr<module::Channel_AWGN_LLR     <>>(new module::Channel_AWGN_LLR <>(p.N * 8));
+	//m.channel_Rayleigh = std::unique_ptr<module::Channel_Rayleigh_LLR<>>(new module::Channel_Rayleigh_LLR <>(p.N * 8, 0));
+	// -QAM- //-/ p.m * 2));
 	m.decoder_std = std::unique_ptr<module::Decoder_RS_std   <>>(new module::Decoder_RS_std   <>(p.K, p.N, p.Pol_Gen));
+	//m.decoder_no = std::unique_ptr<module::Decoder_NO   <>>(new module::Decoder_NO            <>(p.K * 8));
 	//m.decoder_RS = std::unique_ptr<module::Decoder_RS_genius <>>(new module::Decoder_RS_genius<>(p.K, p.N, p.Pol_Gen, *m.encoder));
 
-	m.monitor = std::unique_ptr<module::Monitor_BFER      <>>(new module::Monitor_BFER     <>(p.K * 8, p.fe));
-	m.channel->set_seed(p.seed);
+	m.monitor = std::unique_ptr<module::Monitor_BFER      <>>(new module::Monitor_BFER        <>(p.K * 8, p.fe));
+	m.channel_AWGN->set_seed(p.seed);
+	//m.channel_Rayleigh->set_seed(p.seed);
 };
 
 void init_buffers(const params& p, buffers& b)
@@ -192,13 +347,17 @@ void init_buffers(const params& p, buffers& b)
 	b.enc_bits = std::vector       <int>(p.N * 8);
 	b.enc_bits_it = std::vector    <int>(p.N * 8);
 
-	b.symbols = std::vector      <float>(p.N * 8 / p.m * 2);
+	b.symbols = std::vector      <float>(p.N * 8);
+	// -QAM- //-/ p.m * 2));
 	b.sigma = std::vector        <float>(1);
-	b.noisy_symbols = std::vector<float>(p.N * 8 / p.m * 2);
+	b.noisy_symbols = std::vector<float>(p.N * 8);
+	// -QAM- //-/ p.m * 2));
 
 	b.LLRs_it = std::vector      <float>(p.N * 8);
 	b.LLRs = std::vector         <float>(p.N * 8);
 	b.dec_bits = std::vector       <int>(p.K * 8);
+	b.error = std::vector          <int>(p.K * 8);
+	b.H = std::vector         <float>(p.N * 8);
 }
 
 void init_utils(const modules& m, utils& u)
