@@ -1,0 +1,137 @@
+;This file was created by Graph (http://www.padowan.dk)
+;Do not change this file from other programs.
+[Graph]
+Version = 4.4.2.543
+MinVersion = 2.5
+OS = Windows NT 6.2 
+
+[Axes]
+xMin = -0.21385722
+xMax = 11.16292849
+xTickUnit = 1
+xGridUnit = 1
+xShowGrid = 1
+xAutoTick = 0
+xAutoGrid = 0
+xLabel = Длина ошибки
+yMin = -10.74062428
+yMax = 383.7550279
+yTickUnit = 10
+yGridUnit = 10
+yShowGrid = 1
+yAutoTick = 0
+yAutoGrid = 0
+yLabel = Кол-во ошибок
+AxesColor = clBlue
+GridColor = 0x00FF9999
+NumberFont = Times New Roman,14,clBlack
+LabelFont = Times New Roman,14,clBlack,B
+LegendFont = Times New Roman,22,clBlack
+ShowLegend = 1
+Radian = 1
+
+[PointSeries1]
+FillColor = clBlack
+LineColor = clBlack
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 0
+Font = Tahoma,8,clBlack,U
+LabelPosition = 5
+PointCount = 11
+Points = 1,382;2,238;3,84;4,46;5,23;6,15;7,11;8,7;9,6;10,5;11,1;
+LegendText = No
+
+[PointSeries2]
+FillColor = clRed
+LineColor = clRed
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 1
+Font = Tahoma,8,clBlack,U
+LabelPosition = 5
+PointCount = 10
+Points = 1,246;2,124;3,53;4,30;5,13;6,6;7,4;8,1;9,2;10,1;
+LegendText = m=1
+
+[PointSeries3]
+FillColor = clLime
+LineColor = clLime
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 0
+Font = Tahoma,8,clBlack,U
+LabelPosition = 5
+PointCount = 9
+Points = 1,191;2,80;3,32;4,17;5,9;6,4;7,2;8,1;9,1;
+LegendText = m=2
+
+[PointSeries4]
+FillColor = clBlue
+LineColor = clBlue
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 3
+Font = Tahoma,8,clBlack,U
+LabelPosition = 5
+PointCount = 8
+Points = 1,156;2,54;3,19;4,10;5,5;6,3;7,1;8,1;
+LegendText = m=3
+
+[PointSeries5]
+FillColor = clFuchsia
+LineColor = clFuchsia
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 1
+Font = Tahoma,8,clBlack,U
+LabelPosition = 5
+PointCount = 7
+Points = 1,127;2,41;3,11;4,6;5,3;6,2;7,1;
+LegendText = m=4
+
+[Func1]
+FuncType = 0
+y = -33.47272727*x+251.36363636
+Visible = 0
+LegendText = f(x)=-33.4727*x+251.3636; R²=0.6182
+Color = clRed
+Size = 2
+
+[Func2]
+FuncType = 0
+y = -44.47272727*x+295.32727273
+Visible = 0
+LegendText = f(x)=-44.4727*x+295.3273; R²=0.4916
+Color = clLime
+Size = 2
+
+[Func3]
+FuncType = 0
+y = -55.75*x+327.55555556
+Visible = 0
+LegendText = f(x)=-55.75*x+327.5556; R²=0.4568
+Color = clBlue
+Size = 2
+
+[Func4]
+FuncType = 0
+y = -70.35714286*x+362.5
+Visible = 0
+LegendText = f(x)=-70.3571*x+362.5; R²=0.4559
+Color = clFuchsia
+Size = 2
+
+[Data]
+TextLabelCount = 0
+FuncCount = 4
+PointSeriesCount = 5
+ShadeCount = 0
+RelationCount = 0
+OleObjectCount = 0
+
