@@ -1,0 +1,692 @@
+;This file was created by Graph (http://www.padowan.dk)
+;Do not change this file from other programs.
+[Graph]
+Version = 4.4.2.543
+MinVersion = 2.5
+OS = Windows NT 6.2 
+
+[Axes]
+xMin = -0.26
+xMax = 6.76
+xTickUnit = 0.1
+xGridUnit = 0.1
+xShowGrid = 1
+xAutoTick = 0
+xLabel = SNR
+xAxisCross = 1
+yMin = 1.36099838237279E-07
+yMax = 1.83688682689061
+yTickUnit = 10
+yGridUnit = 10
+yLogScl = 1
+yShowGrid = 1
+yLabel = BER
+AxesColor = clBlue
+GridColor = 0x00FF9999
+LabelFont = Times New Roman,14,clBlack,B
+LegendFont = Times New Roman,12,clBlack
+ShowLegend = 1
+Radian = 1
+LegendPlacement = 4
+
+[PointSeries1]
+FillColor = clBlack
+LineColor = clBlack
+Size = 0
+Style = 0
+LineSize = 2
+LineStyle = 0
+LabelPosition = 1
+PointCount = 1
+Points = 0,0;
+LegendText = 1 - Decoder_polar_SC_fast_sys ------------
+
+[PointSeries2]
+FillColor = clBlack
+LineColor = clBlack
+Size = 0
+Style = 0
+LineSize = 2
+LineStyle = 0
+LabelPosition = 1
+PointCount = 1
+Points = 0,0;
+LegendText = (R - ↓↑; N - Const)
+
+[PointSeries3]
+FillColor = clRed
+LineColor = clRed
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 0
+LabelPosition = 1
+PointCount = 9
+Points = 0.00,1.95*10^-01;0.50,1.18*10^-01;1.00,6.27*10^-02;1.50,2.32*10^-02;2.00,7.64*10^-03;2.50,1.56*10^-03;3.00,2.22*10^-04;3.50,3.04*10^-05;4.00,1.53*10^-06;
+Visible = 0
+LegendText = (K) = 128 (N) = 512 (R) = 0.25
+
+[PointSeries4]
+FillColor = clRed
+LineColor = clRed
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 0
+LabelPosition = 1
+PointCount = 9
+Points = 0.00,2.09*10^-01;0.50,1.58*10^-01;1.00,9.97*10^-02;1.50,5.12*10^-02;2.00,1.63*10^-02;2.50,3.99*10^-03;3.00,5.04*10^-04;3.50,4.90*10^-05;4.00,2.50*10^-06;
+Visible = 0
+LegendText = (K) = 256 (N) = 512 (R) = 0.5
+
+[PointSeries5]
+FillColor = clRed
+LineColor = clRed
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 0
+LabelPosition = 1
+PointCount = 11
+Points = 0.00,1.41*10^-01;0.50,1.30*10^-01;1.00,1.16*10^-01;1.50,9.30*10^-02;2.00,6.30*10^-02;2.50,2.73*10^-02;3.00,7.48*10^-03;3.50,1.27*10^-03;4.00,1.96*10^-04;4.50,1.41*10^-05;5.00,1.19*10^-06;
+Visible = 0
+LegendText = (K) = 384 (N) = 512 (R) = 0.75
+
+[PointSeries6]
+FillColor = clRed
+LineColor = clRed
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 0
+LabelPosition = 1
+PointCount = 14
+Points = 0.00,1.08*10^-01;0.50,9.50*10^-02;1.00,8.35*10^-02;1.50,7.33*10^-02;2.00,5.98*10^-02;2.50,4.37*10^-02;3.00,2.87*10^-02;3.50,1.31*10^-02;4.00,2.97*10^-03;4.50,5.76*10^-04;5.00,7.16*10^-05;5.50,1.22*10^-05;6.00,1.74*10^-06;6.50,2.50*10^-07;
+LegendText = (K) = 448 (N) = 512 (R) = 0.875
+
+[PointSeries7]
+FillColor = clBlack
+LineColor = clBlack
+Size = 0
+Style = 0
+LineSize = 2
+LineStyle = 0
+LabelPosition = 1
+PointCount = 1
+Points = 0,0;
+LegendText = 2 - Decoder_polar_SCL_fast_sys -----------
+
+[PointSeries8]
+FillColor = clBlack
+LineColor = clBlack
+Size = 0
+Style = 0
+LineSize = 2
+LineStyle = 0
+LabelPosition = 1
+PointCount = 1
+Points = 0,0;
+LegendText = L=2
+
+[PointSeries9]
+FillColor = clBlue
+LineColor = clLime
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 1
+LabelPosition = 1
+PointCount = 8
+Points = 0.00,1.33*10^-01;0.50,6.00*10^-02;1.00,1.92*10^-02;1.50,5.80*10^-03;2.00,1.14*10^-03;2.50,1.56*10^-04;3.00,1.51*10^-05;3.50,1.96*10^-07;
+Visible = 0
+LegendText = (K) = 128 (N) = 512 (R) = 0.25
+
+[PointSeries10]
+FillColor = clBlue
+LineColor = clLime
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 1
+LabelPosition = 1
+PointCount = 8
+Points = 0.00,1.89*10^-01;0.50,1.30*10^-01;1.00,7.03*10^-02;1.50,2.31*10^-02;2.00,4.74*10^-03;2.50,6.45*10^-04;3.00,4.58*10^-05;3.50,3.59*10^-06;
+Visible = 0
+LegendText = (K) = 256 (N) = 512 (R) = 0.5
+
+[PointSeries11]
+FillColor = clBlue
+LineColor = clLime
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 1
+LabelPosition = 1
+PointCount = 11
+Points = 0.00,1.39*10^-01;0.50,1.25*10^-01;1.00,1.08*10^-01;1.50,7.45*10^-02;2.00,4.74*10^-02;2.50,1.34*10^-02;3.00,2.69*10^-03;3.50,2.66*10^-04;4.00,2.42*10^-05;4.50,3.43*10^-06;5.00,4.05*10^-07;
+Visible = 0
+LegendText = (K) = 384 (N) = 512 (R) = 0.75
+
+[PointSeries12]
+FillColor = clBlue
+LineColor = clLime
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 1
+LabelPosition = 1
+PointCount = 14
+Points = 0.00,1.06*10^-01;0.50,9.33*10^-02;1.00,8.30*10^-02;1.50,7.31*10^-02;2.00,5.73*10^-02;2.50,4.13*10^-02;3.00,2.14*10^-02;3.50,7.30*10^-03;4.00,1.21*10^-03;4.50,1.90*10^-04;5.00,3.53*10^-05;5.50,6.98*10^-06;6.00,1.18*10^-06;6.50,4.57*10^-08;
+LegendText = (K) = 448 (N) = 512 (R) = 0.875
+
+[PointSeries13]
+FillColor = clBlack
+LineColor = clBlack
+Size = 0
+Style = 0
+LineSize = 2
+LineStyle = 0
+LabelPosition = 1
+PointCount = 1
+Points = 0,0;
+LegendText = L=4
+
+[PointSeries14]
+FillColor = clBlue
+LineColor = clBlue
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 1
+LabelPosition = 1
+PointCount = 7
+Points = 0.00,8.88*10^-02;0.50,3.02*10^-02;1.00,9.02*10^-03;1.50,1.90*10^-03;2.00,2.72*10^-04;2.50,3.53*10^-05;3.00,5.48*10^-06;
+Visible = 0
+LegendText = (K) = 128 (N) = 512 (R) = 0.25
+
+[PointSeries15]
+FillColor = clBlue
+LineColor = clBlue
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 1
+LabelPosition = 1
+PointCount = 7
+Points = 0.00,1.81*10^-01;0.50,9.86*10^-02;1.00,4.47*10^-02;1.50,1.30*10^-02;2.00,1.61*10^-03;2.50,1.43*10^-04;3.00,9.12*10^-06;
+Visible = 0
+LegendText = (K) = 256 (N) = 512 (R) = 0.5
+
+[PointSeries16]
+FillColor = clBlue
+LineColor = clBlue
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 1
+LabelPosition = 1
+PointCount = 10
+Points = 0.00,1.36*10^-01;0.50,1.24*10^-01;1.00,1.07*10^-01;1.50,6.95*10^-02;2.00,3.33*10^-02;2.50,6.88*10^-03;3.00,9.08*10^-04;3.50,1.24*10^-04;4.00,1.43*10^-05;4.50,3.16*10^-06;
+Visible = 0
+LegendText = (K) = 384 (N) = 512 (R) = 0.75
+
+[PointSeries17]
+FillColor = clBlue
+LineColor = clBlue
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 1
+LabelPosition = 1
+PointCount = 13
+Points = 0.00,1.05*10^-01;0.50,9.21*10^-02;1.00,8.21*10^-02;1.50,7.12*10^-02;2.00,5.73*10^-02;2.50,3.79*10^-02;3.00,1.81*10^-02;3.50,4.97*10^-03;4.00,7.91*10^-04;4.50,1.27*10^-04;5.00,2.70*10^-05;5.50,7.18*10^-06;6.00,1.31*10^-06;
+LegendText = (K) = 448 (N) = 512 (R) = 0.875
+
+[PointSeries18]
+FillColor = clBlack
+LineColor = clBlack
+Size = 0
+Style = 0
+LineSize = 2
+LineStyle = 0
+LabelPosition = 1
+PointCount = 1
+Points = 0,0;
+LegendText = L=8
+
+[PointSeries19]
+FillColor = clBlue
+LineColor = clFuchsia
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 1
+LabelPosition = 1
+PointCount = 7
+Points = 0.00,6.24*10^-02;0.50,2.33*10^-02;1.00,6.10*10^-03;1.50,9.72*10^-04;2.00,1.56*10^-04;2.50,2.92*10^-05;3.00,3.02*10^-06;
+Visible = 0
+LegendText = (K) = 128 (N) = 512 (R) = 0.25
+
+[PointSeries20]
+FillColor = clBlue
+LineColor = clFuchsia
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 1
+LabelPosition = 1
+PointCount = 7
+Points = 0.00,1.68*10^-01;0.50,7.89*10^-02;1.00,3.45*10^-02;1.50,6.55*10^-03;2.00,8.44*10^-04;2.50,8.78*10^-05;3.00,8.44*10^-06;
+Visible = 0
+LegendText = (K) = 256 (N) = 512 (R) = 0.5
+
+[PointSeries21]
+FillColor = clBlue
+LineColor = clFuchsia
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 1
+LabelPosition = 1
+PointCount = 10
+Points = 0.00,1.35*10^-01;0.50,1.24*10^-01;1.00,1.03*10^-01;1.50,6.07*10^-02;2.00,2.79*10^-02;2.50,4.28*10^-03;3.00,5.63*10^-04;3.50,1.00*10^-04;4.00,1.38*10^-05;4.50,3.35*10^-06;
+Visible = 0
+LegendText = (K) = 384 (N) = 512 (R) = 0.75
+
+[PointSeries22]
+FillColor = clBlue
+LineColor = clFuchsia
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 1
+LabelPosition = 1
+PointCount = 13
+Points = 0.00,1.05*10^-01;0.50,9.15*10^-02;1.00,8.19*10^-02;1.50,7.00*10^-02;2.00,5.68*10^-02;2.50,3.63*10^-02;3.00,1.54*10^-02;3.50,4.31*10^-03;4.00,6.70*10^-04;4.50,1.18*10^-04;5.00,2.57*10^-05;5.50,7.25*10^-06;6.00,1.25*10^-06;
+LegendText = (K) = 448 (N) = 512 (R) = 0.875
+
+[PointSeries23]
+FillColor = clBlack
+LineColor = clBlack
+Size = 0
+Style = 0
+LineSize = 2
+LineStyle = 0
+LabelPosition = 1
+PointCount = 1
+Points = 0,0;
+LegendText = L=16
+
+[PointSeries24]
+FillColor = clBlue
+LineColor = clPurple
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 1
+LabelPosition = 1
+PointCount = 6
+Points = 0.00,5.54*10^-02;0.50,1.53*10^-02;1.00,3.98*10^-03;1.50,7.76*10^-04;2.00,1.40*10^-04;2.50,2.71*10^-05;
+Visible = 0
+LegendText = (K) = 128 (N) = 512 (R) = 0.25
+
+[PointSeries25]
+FillColor = clBlue
+LineColor = clPurple
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 1
+LabelPosition = 1
+PointCount = 7
+Points = 0.00,1.63*10^-01;0.50,7.26*10^-02;1.00,2.28*10^-02;1.50,4.66*10^-03;2.00,4.37*10^-04;2.50,7.83*10^-05;3.00,8.81*10^-06;
+Visible = 0
+LegendText = (K) = 256 (N) = 512 (R) = 0.5
+
+[PointSeries26]
+FillColor = clBlue
+LineColor = clPurple
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 1
+LabelPosition = 1
+PointCount = 10
+Points = 0.00,1.34*10^-01;0.50,1.22*10^-01;1.00,1.01*10^-01;1.50,5.73*10^-02;2.00,2.16*10^-02;2.50,3.22*10^-03;3.00,4.78*10^-04;3.50,9.34*10^-05;4.00,1.39*10^-05;4.50,3.64*10^-06;
+Visible = 0
+LegendText = (K) = 384 (N) = 512 (R) = 0.75
+
+[PointSeries27]
+FillColor = clBlue
+LineColor = clPurple
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 1
+LabelPosition = 1
+PointCount = 13
+Points = 0.00,1.04*10^-01;0.50,9.19*10^-02;1.00,8.09*10^-02;1.50,7.03*10^-02;2.00,5.65*10^-02;2.50,3.58*10^-02;3.00,1.51*10^-02;3.50,3.90*10^-03;4.00,6.30*10^-04;4.50,1.16*10^-04;5.00,2.57*10^-05;5.50,7.16*10^-06;6.00,1.10*10^-06;
+LegendText = (K) = 448 (N) = 512 (R) = 0.875
+
+[PointSeries28]
+FillColor = clBlack
+LineColor = clBlack
+Size = 0
+Style = 0
+LineSize = 2
+LineStyle = 0
+LabelPosition = 1
+PointCount = 1
+Points = 0,0;
+Visible = 0
+LegendText = 3 - Decoder_polar_SCL_fast_CA_sys --------
+
+[PointSeries29]
+FillColor = clBlack
+LineColor = clBlack
+Size = 0
+Style = 0
+LineSize = 2
+LineStyle = 0
+LabelPosition = 1
+PointCount = 1
+Points = 0,0;
+Visible = 0
+LegendText = --------- 24 - 5GA - 0x864CFB ---------
+
+[PointSeries30]
+FillColor = clBlack
+LineColor = clBlack
+Size = 0
+Style = 0
+LineSize = 2
+LineStyle = 0
+LabelPosition = 1
+PointCount = 1
+Points = 0,0;
+Visible = 0
+LegendText = L=2
+
+[PointSeries31]
+FillColor = clFuchsia
+LineColor = clLime
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 2
+LabelPosition = 1
+PointCount = 7
+Points = 0.00,1.10*10^-01;0.50,5.22*10^-02;1.00,2.40*10^-02;1.50,5.19*10^-03;2.00,8.54*10^-04;2.50,1.30*10^-04;3.00,1.17*10^-05;
+Visible = 0
+LegendText = (K) = 128 (N) = 512 (R) = 0.25
+
+[PointSeries32]
+FillColor = clFuchsia
+LineColor = clLime
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 2
+LabelPosition = 1
+PointCount = 8
+Points = 0.00,1.85*10^-01;0.50,1.30*10^-01;1.00,6.88*10^-02;1.50,2.13*10^-02;2.00,4.41*10^-03;2.50,5.54*10^-04;3.00,4.23*10^-05;3.50,1.93*10^-06;
+Visible = 0
+LegendText = (K) = 256 (N) = 512 (R) = 0.5
+
+[PointSeries33]
+FillColor = clFuchsia
+LineColor = clLime
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 2
+LabelPosition = 1
+PointCount = 10
+Points = 0.00,1.41*10^-01;0.50,1.27*10^-01;1.00,1.06*10^-01;1.50,7.88*10^-02;2.00,3.85*10^-02;2.50,1.17*10^-02;3.00,2.09*10^-03;3.50,2.10*10^-04;4.00,1.74*10^-05;4.50,6.87*10^-07;
+Visible = 0
+LegendText = (K) = 384 (N) = 512 (R) = 0.75
+
+[PointSeries34]
+FillColor = clFuchsia
+LineColor = clLime
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 2
+LabelPosition = 1
+PointCount = 12
+Points = 0.00,1.04*10^-01;0.50,9.42*10^-02;1.00,8.11*10^-02;1.50,7.13*10^-02;2.00,5.84*10^-02;2.50,4.06*10^-02;3.00,2.07*10^-02;3.50,6.63*10^-03;4.00,1.18*10^-03;4.50,1.29*10^-04;5.00,1.14*10^-05;5.50,4.66*10^-07;
+Visible = 0
+LegendText = (K) = 448 (N) = 512 (R) = 0.875
+
+[PointSeries35]
+FillColor = clBlack
+LineColor = clBlack
+Size = 0
+Style = 0
+LineSize = 2
+LineStyle = 0
+LabelPosition = 1
+PointCount = 1
+Points = 0,0;
+Visible = 0
+LegendText = L=4
+
+[PointSeries36]
+FillColor = clFuchsia
+LineColor = clBlue
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 2
+LabelPosition = 1
+PointCount = 6
+Points = 0.00,7.78*10^-02;0.50,2.90*10^-02;1.00,9.89*10^-03;1.50,1.46*10^-03;2.00,1.71*10^-04;2.50,8.73*10^-06;
+Visible = 0
+LegendText = (K) = 128 (N) = 512 (R) = 0.25
+
+[PointSeries37]
+FillColor = clFuchsia
+LineColor = clBlue
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 2
+LabelPosition = 1
+PointCount = 7
+Points = 0.00,1.78*10^-01;0.50,1.06*10^-01;1.00,4.65*10^-02;1.50,9.86*10^-03;2.00,1.59*10^-03;2.50,9.59*10^-05;3.00,3.05*10^-06;
+Visible = 0
+LegendText = (K) = 256 (N) = 512 (R) = 0.5
+
+[PointSeries38]
+FillColor = clFuchsia
+LineColor = clBlue
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 2
+LabelPosition = 1
+PointCount = 9
+Points = 0.00,1.39*10^-01;0.50,1.25*10^-01;1.00,1.02*10^-01;1.50,7.06*10^-02;2.00,2.92*10^-02;2.50,7.11*10^-03;3.00,6.05*10^-04;3.50,3.68*10^-05;4.00,3.19*10^-06;
+Visible = 0
+LegendText = (K) = 384 (N) = 512 (R) = 0.75
+
+[PointSeries39]
+FillColor = clFuchsia
+LineColor = clBlue
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 2
+LabelPosition = 1
+PointCount = 11
+Points = 0.00,1.03*10^-01;0.50,9.36*10^-02;1.00,8.11*10^-02;1.50,6.98*10^-02;2.00,5.70*10^-02;2.50,3.74*10^-02;3.00,1.53*10^-02;3.50,3.88*10^-03;4.00,4.38*10^-04;4.50,2.65*10^-05;5.00,6.24*10^-07;
+Visible = 0
+LegendText = (K) = 448 (N) = 512 (R) = 0.875
+
+[PointSeries40]
+FillColor = clBlack
+LineColor = clBlack
+Size = 0
+Style = 0
+LineSize = 2
+LineStyle = 0
+LabelPosition = 1
+PointCount = 1
+Points = 0,0;
+Visible = 0
+LegendText = L=8
+
+[PointSeries41]
+FillColor = clFuchsia
+LineColor = clFuchsia
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 2
+LabelPosition = 1
+PointCount = 5
+Points = 0.00,5.18*10^-02;0.50,2.09*10^-02;1.00,4.52*10^-03;1.50,5.51*10^-04;2.00,1.82*10^-05;
+Visible = 0
+LegendText = (K) = 128 (N) = 512 (R) = 0.25
+
+[PointSeries42]
+FillColor = clFuchsia
+LineColor = clFuchsia
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 2
+LabelPosition = 1
+PointCount = 6
+Points = 0.00,1.56*10^-01;0.50,8.74*10^-02;1.00,3.47*10^-02;1.50,5.55*10^-03;2.00,5.67*10^-04;2.50,1.85*10^-05;
+Visible = 0
+LegendText = (K) = 256 (N) = 512 (R) = 0.5
+
+[PointSeries43]
+FillColor = clFuchsia
+LineColor = clFuchsia
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 2
+LabelPosition = 1
+PointCount = 8
+Points = 0.00,1.38*10^-01;0.50,1.24*10^-01;1.00,1.00*10^-01;1.50,6.40*10^-02;2.00,2.28*10^-02;2.50,3.72*10^-03;3.00,3.11*10^-04;3.50,7.02*10^-06;
+Visible = 0
+LegendText = (K) = 384 (N) = 512 (R) = 0.75
+
+[PointSeries44]
+FillColor = clFuchsia
+LineColor = clFuchsia
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 2
+LabelPosition = 1
+PointCount = 10
+Points = 0.00,1.03*10^-01;0.50,9.25*10^-02;1.00,8.08*10^-02;1.50,7.02*10^-02;2.00,5.71*10^-02;2.50,3.47*10^-02;3.00,1.30*10^-02;3.50,2.64*10^-03;4.00,2.04*10^-04;4.50,7.38*10^-06;
+Visible = 0
+LegendText = (K) = 448 (N) = 512 (R) = 0.875
+
+[PointSeries45]
+FillColor = clBlack
+LineColor = clBlack
+Size = 0
+Style = 0
+LineSize = 2
+LineStyle = 0
+LabelPosition = 1
+PointCount = 1
+Points = 0,0;
+Visible = 0
+LegendText = L=16
+
+[PointSeries46]
+FillColor = clFuchsia
+LineColor = clPurple
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 2
+LabelPosition = 1
+PointCount = 5
+Points = 0.00,3.95*10^-02;0.50,1.28*10^-02;1.00,2.30*10^-03;1.50,1.66*10^-04;2.00,2.12*10^-05;
+Visible = 0
+LegendText = (K) = 128 (N) = 512 (R) = 0.25
+
+[PointSeries47]
+FillColor = clFuchsia
+LineColor = clPurple
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 2
+LabelPosition = 1
+PointCount = 6
+Points = 0.00,1.41*10^-01;0.50,7.85*10^-02;1.00,2.05*10^-02;1.50,3.10*10^-03;2.00,2.04*10^-04;2.50,2.82*10^-06;
+Visible = 0
+LegendText = (K) = 256 (N) = 512 (R) = 0.5
+
+[PointSeries48]
+FillColor = clFuchsia
+LineColor = clPurple
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 2
+LabelPosition = 1
+PointCount = 8
+Points = 0.00,1.38*10^-01;0.50,1.24*10^-01;1.00,9.81*10^-02;1.50,5.94*10^-02;2.00,1.75*10^-02;2.50,2.24*10^-03;3.00,1.34*10^-04;3.50,1.72*10^-06;
+Visible = 0
+LegendText = (K) = 384 (N) = 512 (R) = 0.75
+
+[PointSeries49]
+FillColor = clFuchsia
+LineColor = clPurple
+Size = 3
+Style = 0
+LineSize = 2
+LineStyle = 2
+LabelPosition = 1
+PointCount = 10
+Points = 0.00,1.02*10^-01;0.50,9.24*10^-02;1.00,8.02*10^-02;1.50,6.86*10^-02;2.00,5.59*10^-02;2.50,3.27*10^-02;3.00,9.93*10^-03;3.50,1.52*10^-03;4.00,1.15*10^-04;4.50,2.56*10^-06;
+Visible = 0
+LegendText = (K) = 448 (N) = 512 (R) = 0.875
+
+[Func1]
+FuncType = 0
+y = 0.001
+Visible = 0
+Color = clBlack
+DrawType = 2
+
+[Func2]
+FuncType = 0
+y = 0.0001
+Visible = 0
+Color = clBlack
+DrawType = 2
+
+[Func3]
+FuncType = 0
+y = 1E-5
+Visible = 0
+Color = clBlack
+DrawType = 2
+
+[Func4]
+FuncType = 0
+y = 1E-6
+Visible = 0
+Color = clBlack
+DrawType = 2
+
+[Data]
+TextLabelCount = 0
+FuncCount = 4
+PointSeriesCount = 49
+ShadeCount = 0
+RelationCount = 0
+OleObjectCount = 0
+
