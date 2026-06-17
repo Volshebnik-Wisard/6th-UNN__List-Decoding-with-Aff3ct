@@ -1,0 +1,1 @@
+// stub: gdiplus.h suppressed
